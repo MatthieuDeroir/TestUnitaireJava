@@ -1,4 +1,4 @@
-package fr.espi;
+package fr.epsi;
 
 import fr.epsi.Managers.LanguageManager;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package fr.espi;
+package fr.epsi;
 
 import fr.epsi.Managers.PalindromeManager;
 import org.junit.jupiter.params.ParameterizedTest;
