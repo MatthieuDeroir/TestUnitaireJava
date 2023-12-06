@@ -1,4 +1,4 @@
-package fr.epsi;
+package fr.epsi.ManagersTest;
 
 import fr.epsi.Managers.PalindromeManager;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,12 +10,6 @@ import java.util.ResourceBundle;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PalindromeManagerTest {
-
-    public void SetUp() {
-        // Configuration initiale si nécessaire
-    }
-
-
     @ParameterizedTest
     @CsvSource({
             "jean, fr",
@@ -23,7 +17,7 @@ public class PalindromeManagerTest {
             "gourde, es"
     })
     public void checkPalindrome_ReturnOnlyMirroredString(String chaine, String lang) {
-        ResourceBundle messages = ResourceBundle.getBundle("messages", new Locale(lang));
+        ResourceBundle messages = ResourceBundle.getBundle("messages", Locale.forLanguageTag(lang));
 
         // ETANT DONNÉ une chaine de caractère
         // QUAND on verifie si c'est un palindrome
@@ -47,14 +41,12 @@ public class PalindromeManagerTest {
     public void checkPalindrome_ReturnPalindromWithMessageInUsersSelectedLanguage(String chaine, String lang) {
         // ETANT DONNÉ une chaine de caractère
         // QUAND on verifie si c'est un palindrome
-        ResourceBundle messages = ResourceBundle.getBundle("messages", new Locale(lang));
+        ResourceBundle messages = ResourceBundle.getBundle("messages", Locale.forLanguageTag(lang));
 
         String resultat = PalindromeManager.Check(chaine, messages);
 
         // ALORS on obtient un message de confirmation
-        String attendu = new StringBuilder(chaine).reverse().toString() + System.lineSeparator() + messages.getString("palindrome.response");
+        String attendu = new StringBuilder(chaine).reverse() + System.lineSeparator() + messages.getString("palindrome.response");
         assertEquals(attendu, resultat);
     }
-
-
 }

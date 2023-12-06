@@ -1,4 +1,4 @@
-package fr.epsi;
+package fr.epsi.ManagersTest;
 
 import fr.epsi.Managers.LanguageManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +24,6 @@ public class LanguageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        // Configuration initiale si nécessaire
     }
 
     @ParameterizedTest

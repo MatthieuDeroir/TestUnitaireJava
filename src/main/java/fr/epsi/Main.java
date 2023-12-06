@@ -1,6 +1,6 @@
 package fr.epsi;
 
-import fr.epsi.Enums.EGreeting;
+import fr.epsi.Enums.eGreeting;
 import fr.epsi.Managers.IOManager;
 import fr.epsi.Managers.LanguageManager;
 import fr.epsi.Managers.PalindromeManager;
@@ -25,7 +25,7 @@ public class Main {
             // Demander à l'utilisateur s'il veut continuer
         } while (ioManager.AskToContinue());
         // Dire au revoir dans la langue de l'utilisateur
-        ioManager.ShowMessage(EGreeting.GOODBYE.getKey());
+        ioManager.ShowMessage(eGreeting.GOODBYE.getKey());
 
     }
 }

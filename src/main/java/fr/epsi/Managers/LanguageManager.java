@@ -36,7 +36,7 @@ public class LanguageManager {
             throw new MissingResourceException("No resource bundle found for " + lang, "messages", lang);
         }
 
-        return ResourceBundle.getBundle("messages", new Locale(lang));
+        return ResourceBundle.getBundle("messages", Locale.forLanguageTag(lang));
     }
 
 
@@ -61,6 +61,7 @@ public class LanguageManager {
             case LANG_ES:
                 return userLang;
             default:
+                System.out.println("Invalid language:" + userLang.toLowerCase()+ ", using default language (" + LANG_DEFAULT + ")");
                 return LANG_DEFAULT;
         }
     }

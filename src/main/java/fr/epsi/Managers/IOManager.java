@@ -1,7 +1,8 @@
 package fr.epsi.Managers;
 
 
-import fr.epsi.Enums.EGreeting;
+import fr.epsi.Enums.eGreeting;
+import fr.epsi.Enums.eInput;
 
 import java.util.Calendar;
 import java.util.ResourceBundle;
@@ -20,11 +21,11 @@ public class IOManager {
     }
 
     public String GetInput() {
-        ShowMessage("input.prompt");
+        ShowMessage(eInput.PROMPT.getKey());
         String userInput = sc.nextLine().toLowerCase();
         // vérifier que la saisie utilisateur est valide
         while (userInput.isEmpty()) {
-            ShowMessage("input.invalid");
+            ShowMessage(eInput.INVALID.getKey());
             userInput = sc.nextLine().toLowerCase();
         }
         return userInput;
@@ -35,7 +36,7 @@ public class IOManager {
         String userInput = sc.nextLine().toLowerCase();
         // vérifier que la saisie utilisateur est valide
         while (userInput.isEmpty()) {
-            ShowMessage("input.invalid");
+            ShowMessage(eInput.INVALID.getKey());
             userInput = sc.nextLine().toLowerCase();
         }
         return userInput;
@@ -46,19 +47,35 @@ public class IOManager {
     }
 
     public boolean AskToContinue() {
-        String userInput = GetInput("input.continue");
+        String userInput = GetInput(eInput.CONTINUE.getKey());
         return !userInput.equalsIgnoreCase("N");
     }
 
 
     public void GetGreetingMessage() {
         if (hour < 12) {
-            ShowMessage(EGreeting.MORNING.getKey());
+            ShowMessage(eGreeting.MORNING.getKey());
         } else if (hour < 18) {
-            ShowMessage(EGreeting.AFTERNOON.getKey());
+            ShowMessage(eGreeting.AFTERNOON.getKey());
         } else {
-            ShowMessage(EGreeting.EVENING.getKey());
+            ShowMessage(eGreeting.EVENING.getKey());
         }
+    }
+
+
+
+    // This method is not used in the application, but is used in the unit tests
+    public String GetGreetingMessage(int hour) {
+        String key;
+        if (hour < 12) {
+            key = eGreeting.MORNING.getKey();
+        } else if (hour < 18) {
+            key = eGreeting.AFTERNOON.getKey();
+        } else {
+            key = eGreeting.EVENING.getKey();
+        }
+        ShowMessage(key);
+        return messages.getString(key);
     }
 
 

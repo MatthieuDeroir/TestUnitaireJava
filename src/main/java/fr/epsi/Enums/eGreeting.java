@@ -1,6 +1,6 @@
 package fr.epsi.Enums;
 
-public enum EGreeting {
+public enum eGreeting {
     MORNING("greeting.morning"),
     AFTERNOON("greeting.afternoon"),
     EVENING("greeting.evening"),
@@ -8,7 +8,7 @@ public enum EGreeting {
 
     private final String key;
 
-    EGreeting(String key) {
+    eGreeting(String key) {
         this.key = key;
     }
 
