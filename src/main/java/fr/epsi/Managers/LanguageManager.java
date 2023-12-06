@@ -1,20 +1,26 @@
-package fr.epsi;
+package fr.epsi.Managers;
+
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 
-class LanguageManager {
+public class LanguageManager {
     private static final String LANG_FR = "fr";
     private static final String LANG_EN = "en";
     private static final String LANG_ES = "es";
     private static final String LANG_DEFAULT = LANG_EN;
 
-    static ResourceBundle getLanguageResources(Scanner sc) {
-        System.out.println("Automatic Language Scan ? (O/N)");
-        String userLang = sc.nextLine().equalsIgnoreCase("O") ? getSystemLanguage() : getUserSelectedLanguage(sc);
+    public static ResourceBundle getLanguageResourcesFromUser(Scanner sc) {
+        System.out.println("Automatic Language Scan ? (Y/N)");
+        String userLang = sc.nextLine().equalsIgnoreCase("Y") ? getSystemLanguage() : getUserSelectedLanguage(sc);
 
         Locale locale = new Locale(userLang);
+        return ResourceBundle.getBundle("messages", locale);
+    }
+
+    public static ResourceBundle getLanguageResources(String lang) {
+        Locale locale = new Locale(lang);
         return ResourceBundle.getBundle("messages", locale);
     }
 
