@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb187b54-421b-4ca3-b9b4-00b8f0823444" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_ar.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_de.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_hi.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_it.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_ja.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_ko.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_pl.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_pt.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_ro.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Enums/eLang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/Enums/eLang.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/LanguageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/LanguageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/IOManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/IOManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/IOManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/IOManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/LanguageManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/LanguageManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/PalindromeManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/PalindromeManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +65,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "File.Encoding",
+    "settings.editor.selected.configurable": "project.propVCSSupport.ChangelistConflict",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -84,7 +74,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.ManagersTest in TestsUni">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fr.epsi.Main" />
       <module name="TestsUni" />
@@ -94,36 +84,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IOManagerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TestsUni" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.epsi.Managers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.epsi.Managers" />
-      <option name="MAIN_CLASS_NAME" value="fr.epsi.Managers.IOManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IOManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TestsUni" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.epsi.ManagersTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.espi" />
-      <option name="MAIN_CLASS_NAME" value="fr.espi.IOManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,6 +100,29 @@
       <option name="MAIN_CLASS_NAME" value="fr.epsi.ManagersTest.IOManagerTest" />
       <option name="METHOD_NAME" value="testGetGreetingMessage" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LanguageManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TestsUni" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.epsi.ManagersTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.epsi.ManagersTest" />
+      <option name="MAIN_CLASS_NAME" value="fr.epsi.ManagersTest.LanguageManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManagersTest in TestsUni" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TestsUni" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,11 +144,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ManagersTest in TestsUni" />
+        <item itemvalue="JUnit.PalindromeManagerTest" />
+        <item itemvalue="JUnit.LanguageManagerTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.IOManagerTest.testGetGreetingMessage" />
-        <item itemvalue="JUnit.IOManagerTest (1)" />
-        <item itemvalue="JUnit.IOManagerTest" />
-        <item itemvalue="JUnit.PalindromeManagerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -178,11 +161,26 @@
       <option name="presentableId" value="Default" />
       <updated>1701847749677</updated>
       <workItem from="1701847750934" duration="3074000" />
-      <workItem from="1701851712711" duration="17726000" />
+      <workItem from="1701851712711" duration="18766000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/PalindromeManagerTest.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

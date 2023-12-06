@@ -27,7 +27,7 @@ public class LanguageManagerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"fr", "en", "es"})
+    @ValueSource(strings = {"fr", "en", "es", "de", "it", "pt", "ru", "zh", "ja", "ko", "hi", "ar", "ro"})
     public void getLanguageResourcesFromUser_ValidLanguage(String lang) {
         when(mockScanner.nextLine()).thenReturn(lang);
         ResourceBundle resources = LanguageManager.getLanguageResourcesFromUser(mockScanner);
@@ -50,7 +50,7 @@ public class LanguageManagerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"fr", "en", "es"})
+    @ValueSource(strings = {"fr", "en", "es", "de", "it", "pt", "ru", "zh", "ja", "ko", "hi", "ar", "ro"})
     public void getLanguageResources_ValidLanguage(String lang) {
         ResourceBundle resources = LanguageManager.getLanguageResources(lang);
         assertEquals(lang, resources.getLocale().getLanguage());

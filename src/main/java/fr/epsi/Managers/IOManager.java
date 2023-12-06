@@ -1,6 +1,5 @@
 package fr.epsi.Managers;
 
-
 import fr.epsi.Enums.eGreeting;
 import fr.epsi.Enums.eInput;
 

@@ -14,7 +14,16 @@ public class PalindromeManagerTest {
     @CsvSource({
             "jean, fr",
             "sifflet, en",
-            "gourde, es"
+            "gourde, es",
+            "silencio, it",
+            "schweigen, de",
+            "silêncio, pt",
+            "tăcere, ro",
+            "тишина, ru",
+            "寂静, zh",
+            "静寂, ja",
+            "고요, ko",
+            "चुप्पी, hi",
     })
     public void checkPalindrome_ReturnOnlyMirroredString(String chaine, String lang) {
         ResourceBundle messages = ResourceBundle.getBundle("messages", Locale.forLanguageTag(lang));
@@ -31,12 +40,18 @@ public class PalindromeManagerTest {
 
     @ParameterizedTest
     @CsvSource({
-            "kayak, fr",
-            "radar, en",
-            "ressasser, es",
             "s.o.s, fr",
-            "été, en",
-            "reconocer, es"
+            "radar, en",
+            "reconocer, es",
+            "reliefpfeiler, de",
+            "anna, it",
+            "arara, pt",
+            "acca, ro",
+            "шалаш, ru",
+            "上海自来水来自海上, zh",
+            "たけやぶやけた, ja",
+            "기러기, ko",
+            "नमन, hi",
     })
     public void checkPalindrome_ReturnPalindromWithMessageInUsersSelectedLanguage(String chaine, String lang) {
         // ETANT DONNÉ une chaine de caractère
