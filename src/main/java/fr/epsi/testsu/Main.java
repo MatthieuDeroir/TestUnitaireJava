@@ -1,4 +1,4 @@
-package fr.epsi.jpa;
+package fr.epsi.testsu;
 
 import java.util.Calendar;
 import java.util.Scanner;
