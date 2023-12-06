@@ -3,17 +3,20 @@ package fr.epsi.Managers;
 
 import fr.epsi.Enums.EGreeting;
 
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class IOManager {
 
+    private final int hour;
     private final Scanner sc;
     private final ResourceBundle messages;
 
     public IOManager(Scanner scanner, ResourceBundle messages) {
         this.sc = scanner;
         this.messages = messages;
+        this.hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
     }
 
     public String GetInput() {
@@ -47,16 +50,17 @@ public class IOManager {
         return !userInput.equalsIgnoreCase("N");
     }
 
-    public String GetGreeting() {
-        int hour = java.time.LocalTime.now().getHour();
 
+    public void GetGreetingMessage() {
         if (hour < 12) {
-            return EGreeting.MORNING.getKey();
+            ShowMessage(EGreeting.MORNING.getKey());
         } else if (hour < 18) {
-            return EGreeting.AFTERNOON.getKey();
+            ShowMessage(EGreeting.AFTERNOON.getKey());
         } else {
-            return EGreeting.EVENING.getKey();
+            ShowMessage(EGreeting.EVENING.getKey());
         }
     }
+
+
 }
 

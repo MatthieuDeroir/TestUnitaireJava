@@ -17,11 +17,11 @@ public class Main {
 
         do {
             // Ecrire Bonjour ou bonsoir en fonction de l'heure et de la langue de l'utilisateur
-            ioManager.ShowMessage(ioManager.GetGreeting());
+            ioManager.GetGreetingMessage();
             // Demander à l'utilisateur de saisir un mot et récupérer la saisie utilisateur
-            // Si la saisie utilisateur est un palindrome afficher "Bien-dit !" dans la langue de l'utilisateur
+            // Si la saisie utilyisateur est un palindrome afficher "Bien-dit !" dans la langue de l'utilisateur
             // Sinon afficher la saisie utilisateur inversée
-            System.out.println(PalindromeManager.Check(ioManager, messages));
+            System.out.println(PalindromeManager.Check(ioManager.GetInput(), messages));
             // Demander à l'utilisateur s'il veut continuer
         } while (ioManager.AskToContinue());
         // Dire au revoir dans la langue de l'utilisateur
