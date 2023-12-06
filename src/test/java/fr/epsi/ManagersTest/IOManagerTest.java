@@ -54,7 +54,7 @@ class IOManagerTest {
         assertFalse(ioManager.AskToContinue());
     }
 
-    private static Stream<Object[]> greetingMessageTestData() {
+    private static Stream<Object[]> greetingMessageTest_VALID() {
         return Stream.of(
                 new Object[]{9, eGreeting.MORNING.getKey(), "Good morning"},
                 new Object[]{15, eGreeting.AFTERNOON.getKey(), "Good afternoon"},
@@ -63,10 +63,20 @@ class IOManagerTest {
     }
 
     @ParameterizedTest
-    @MethodSource("greetingMessageTestData")
+    @MethodSource("greetingMessageTest_VALID")
     public void testGetGreetingMessage(int hour, String greetingKey, String expectedMessage) {
         when(mockResourceBundle.getString(greetingKey)).thenReturn(expectedMessage);
         String greeting = ioManager.GetGreetingMessage(hour);
         assertEquals(expectedMessage, greeting);
     }
+
+    private static Stream<Object[]> goodByeMessageTest_VALID() {
+        return Stream.of(
+                new Object[]{9, "Goodbye"},
+                new Object[]{15, "Goodbye"},
+                new Object[]{20, "Goodbye"}
+        );
+    }
+
+
 }
