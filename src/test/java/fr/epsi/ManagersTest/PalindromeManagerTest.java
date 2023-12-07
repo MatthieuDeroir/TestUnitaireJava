@@ -1,6 +1,6 @@
 package fr.epsi.ManagersTest;
 
-import fr.epsi.Managers.PalindromeManager;
+import fr.epsi.App.Managers.PalindromeManager;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

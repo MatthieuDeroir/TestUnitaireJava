@@ -1,12 +1,11 @@
 package fr.epsi.ManagersTest;
 
-import fr.epsi.Enums.eGreeting;
-import fr.epsi.Managers.IOManager;
+import fr.epsi.App.Enums.eSentences;
+import fr.epsi.App.Managers.IOManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -56,9 +55,9 @@ class IOManagerTest {
 
     private static Stream<Object[]> greetingMessageTest_VALID() {
         return Stream.of(
-                new Object[]{9, eGreeting.MORNING.getKey(), "Good morning"},
-                new Object[]{15, eGreeting.AFTERNOON.getKey(), "Good afternoon"},
-                new Object[]{20, eGreeting.EVENING.getKey(), "Good evening"}
+                new Object[]{9, eSentences.MORNING.getKey(), "Good morning"},
+                new Object[]{15, eSentences.AFTERNOON.getKey(), "Good afternoon"},
+                new Object[]{20, eSentences.EVENING.getKey(), "Good evening"}
         );
     }
 
