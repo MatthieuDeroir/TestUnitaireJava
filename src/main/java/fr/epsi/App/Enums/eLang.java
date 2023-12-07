@@ -1,4 +1,4 @@
-package fr.epsi.Enums;
+package fr.epsi.App.Enums;
 
 public enum eLang {
 
