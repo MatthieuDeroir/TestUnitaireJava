@@ -66,8 +66,40 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.12.7.1</version>
         </dependency>
-
     </dependencies>
-
-
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>21</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version> <!-- Utilisez la dernière version disponible -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>fr.epsi.Main
+                            </mainClass> <!-- Assurez-vous que c'est la classe principale correcte -->
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id> <!-- Nom de l'exécution -->
+                        <phase>package</phase> <!-- Lie cette exécution à la phase de package -->
+                        <goals>
+                            <goal>single</goal> <!-- Crée un seul fichier JAR -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

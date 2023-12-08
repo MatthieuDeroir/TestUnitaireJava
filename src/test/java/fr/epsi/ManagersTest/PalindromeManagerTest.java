@@ -1,6 +1,6 @@
 package fr.epsi.ManagersTest;
 
-import fr.epsi.App.Managers.PalindromeManager;
+import fr.epsi.App.Business.Palindrome;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -30,7 +30,7 @@ public class PalindromeManagerTest {
 
         // ETANT DONNÉ une chaine de caractère
         // QUAND on verifie si c'est un palindrome
-        String resultat = PalindromeManager.Check(chaine, messages);
+        String resultat = Palindrome.Check(chaine, messages);
 
         String inversion = new StringBuilder(chaine).reverse().toString();
 
@@ -58,7 +58,7 @@ public class PalindromeManagerTest {
         // QUAND on verifie si c'est un palindrome
         ResourceBundle messages = ResourceBundle.getBundle("messages", Locale.forLanguageTag(lang));
 
-        String resultat = PalindromeManager.Check(chaine, messages);
+        String resultat = Palindrome.Check(chaine, messages);
 
         // ALORS on obtient un message de confirmation
         String attendu = new StringBuilder(chaine).reverse() + System.lineSeparator() + messages.getString("palindrome.response");

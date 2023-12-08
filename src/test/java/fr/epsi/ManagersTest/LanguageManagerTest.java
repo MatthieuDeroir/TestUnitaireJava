@@ -23,6 +23,8 @@ public class LanguageManagerTest {
     @Mock
     private Scanner mockScanner;
 
+    private LanguageManager languageManager;
+
     @BeforeEach
     public void setUp() {
     }
@@ -31,36 +33,36 @@ public class LanguageManagerTest {
     @ValueSource(strings = {"fr", "en", "es", "de", "it", "pt", "ru", "zh", "ja", "ko", "hi", "ar", "ro"})
     public void getLanguageResourcesFromUser_ValidLanguage(String lang) throws IOException, InterruptedException {
         when(mockScanner.nextLine()).thenReturn(lang);
-        ResourceBundle resources = LanguageManager.getLanguageResourcesFromUser(mockScanner);
+        ResourceBundle resources = languageManager.getLanguageResourcesFromUser(mockScanner);
         assertEquals(lang, resources.getLocale().getLanguage());
     }
 
     @Test
     public void getLanguageResourcesFromUser_InvalidLanguage() throws IOException, InterruptedException {
         when(mockScanner.nextLine()).thenReturn("invalid_language");
-        ResourceBundle resources = LanguageManager.getLanguageResourcesFromUser(mockScanner);
+        ResourceBundle resources = languageManager.getLanguageResourcesFromUser(mockScanner);
         assertEquals(LanguageManager.LANG_DEFAULT, resources.getLocale().getLanguage());
     }
 
     @Test
     public void getLanguageResourcesFromUser_AutomaticLanguageScan() throws IOException, InterruptedException {
         when(mockScanner.nextLine()).thenReturn("Y");
-        ResourceBundle resources = LanguageManager.getLanguageResourcesFromUser(mockScanner);
-        String expectedLanguage = LanguageManager.getSystemLanguage();
+        ResourceBundle resources = languageManager.getLanguageResourcesFromUser(mockScanner);
+        String expectedLanguage = languageManager.getSystemLanguage();
         assertEquals(expectedLanguage, resources.getLocale().getLanguage());
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"fr", "en", "es", "de", "it", "pt", "ru", "zh", "ja", "ko", "hi", "ar", "ro"})
     public void getLanguageResources_ValidLanguage(String lang) throws IOException, InterruptedException {
-        ResourceBundle resources = LanguageManager.getLanguageResources(lang);
+        ResourceBundle resources = languageManager.getLanguageResources(lang);
         assertEquals(lang, resources.getLocale().getLanguage());
     }
 
     @Test
     public void getLanguageResources_InvalidLanguage() {
         assertThrows(MissingResourceException.class, () -> {
-            LanguageManager.getLanguageResources("invalid_language");
+            languageManager.getLanguageResources("invalid_language");
         });
     }
 }

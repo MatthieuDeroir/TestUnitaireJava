@@ -8,33 +8,38 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-import fr.epsi.App.Enums.eLang;
-import fr.epsi.App.Services.TranslationService;
+import fr.epsi.App.Managers.ResourceBundleFactory;
+import fr.epsi.App.Services.LanguageTranslationService;
+import fr.epsi.App.Utils.ConsoleUtils;
 
 
 public class LanguageManager {
     private static final Map<String, String> languageMap;
     private static final List<String> languages;
+    private static ConsoleUtils console = new ConsoleUtils();
+    // get the default language from the config.properties file
+    public static final String LANG_DEFAULT = ResourceBundle.getBundle("config").getString("LANG_DEFAULT");
+    static List<String> acceptedLanguages;
+    ResourceBundleFactory bundleFactory = new ResourceBundleFactory(languages, LANG_DEFAULT);
+
 
     static {
         try {
+            acceptedLanguages = LanguageTranslationService.getSupportedLanguages();
             languageMap = initLanguageMap();
             languages = new ArrayList<>(languageMap.keySet());
-            updateResourceBundles();
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
 
-    public static final String LANG_DEFAULT = eLang.LANG_EN.getKey();
-
-    private final TranslationService translationService;
-
-    public LanguageManager(TranslationService translationService) {
-        this.translationService = translationService;
+    public LanguageManager() throws IOException, InterruptedException {
     }
 
+
+
+    // Initialize the language map by searching for the files in the resources folder
     private static Map<String, String> initLanguageMap() throws IOException, InterruptedException {
         Map<String, String> map = new HashMap<>();
 
@@ -59,93 +64,27 @@ public class LanguageManager {
         return map;
     }
 
-
-    private static void updateResourceBundles() throws IOException, InterruptedException {
-        ResourceBundle englishBundle = ResourceBundle.getBundle("messages", Locale.ENGLISH);
-
-        int totalLanguages = languages.size() - 1; // Subtract 1 for English
-        int processedLanguages = 0;
-
-        System.out.println("Updating resource bundles...");
-
-        for (String lang : languages) {
-            if (!lang.equals("en")) {
-
-                ResourceBundle currentBundle = ResourceBundle.getBundle("messages", Locale.forLanguageTag(lang));
-                Properties properties = bundleToProperties(currentBundle);
-
-                boolean updated = addMissingKeys(englishBundle, properties, lang);
-                updated |= removeObsoleteKeys(englishBundle, properties);
-
-                if (updated) {
-                    String ressourcesPath = "src/main/resources/";
-                    savePropertiesToFile(properties, ressourcesPath + "messages_" + lang + ".properties");
-                } else {
-                }
-
-                processedLanguages++;
-                //Clear the console
-                try {
-                    new ProcessBuilder("/bin/bash", "-c", "clear").inheritIO().start().waitFor();
-                } catch (IOException | InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                System.out.printf("Progress: %.2f%%\n", (processedLanguages / (double) totalLanguages) * 100);
-            }
-        }
-
-        System.out.println("Resource bundle updates completed.");
-    }
-
-    private static boolean addMissingKeys(ResourceBundle englishBundle, Properties properties, String targetLang) throws IOException, InterruptedException {
-        boolean updated = false;
-        for (String key : englishBundle.keySet()) {
-            if (!properties.containsKey(key)) {
-                String translatedValue = TranslationService.translate(englishBundle.getString(key), targetLang);
-                properties.put(key, translatedValue);
-                updated = true;
-            }
-        }
-        return updated;
-    }
-
-    private static boolean removeObsoleteKeys(ResourceBundle englishBundle, Properties properties) {
-        boolean updated = false;
-        List<String> keysToRemove = new ArrayList<>();
-
-        for (String key : properties.stringPropertyNames()) {
-            if (!englishBundle.containsKey(key)) {
-                keysToRemove.add(key);
-                updated = true;
-            }
-        }
-
-        keysToRemove.forEach(key -> {
-            properties.remove(key);
-        });
-
-        return updated;
-    }
-
-    private static Properties bundleToProperties(ResourceBundle bundle) {
-        Properties properties = new Properties();
-        bundle.keySet().forEach(key -> properties.put(key, bundle.getString(key)));
-        return properties;
-    }
-
-    private static void savePropertiesToFile(Properties properties, String filePath) throws IOException {
-        try (OutputStream output = new FileOutputStream(filePath)) {
-            properties.store(output, null);
-        }
-    }
-
-
     // Get the language resources from the user
-    public static ResourceBundle getLanguageResourcesFromUser(Scanner sc) throws IOException, InterruptedException {
+    public ResourceBundle getLanguageResourcesFromUser(Scanner sc) throws IOException, InterruptedException {
         try {
             System.out.println("Automatic Language Scan ? (Y/N)");
             String userLang = sc.nextLine().equalsIgnoreCase("Y") ? getSystemLanguage() : getUserSelectedLanguage(sc);
+            // replace the value of the key "LANG_DEFAULT" in the config.properties file
+            ResourceBundle config = ResourceBundle.getBundle("config");
+            config.keySet().stream().filter(key -> key.equals("LANG_DEFAULT")).forEach(key -> {
+                try {
+                    config.getString(key);
+                    config.keySet().stream().filter(key1 -> key1.equals("LANG_DEFAULT")).forEach(key1 -> {
+                        try {
+                            config.getString(key1);
+                        } catch (MissingResourceException e) {
+                            System.err.println("No resource bundle found, using default.");
+                        }
+                    });
+                } catch (MissingResourceException e) {
+                    System.err.println("No resource bundle found, using default.");
+                }
+            });
             return getLanguageResources(userLang);
         } catch (MissingResourceException e) {
             System.err.println("No resource bundle found, using default.");
@@ -156,35 +95,52 @@ public class LanguageManager {
         }
     }
 
+    // Get the language resources from the user
+    private String getUserSelectedLanguage(Scanner sc) {
+        System.out.println("Please enter your language using digraphs (default: " + LANG_DEFAULT + ")");
+        String userLang = sc.nextLine();
+        if (userLang.equalsIgnoreCase("default")) {
+            return LANG_DEFAULT;
+        } else if (userLang.equalsIgnoreCase("auto")) {
+            return getSystemLanguage();
+        } else if (!acceptedLanguages.contains(userLang)) {
+            System.err.println("Language not supported, retry.");
+            System.out.println("Supported languages: " + acceptedLanguages);
+            return getUserSelectedLanguage(sc);
+        }
+        return userLang;
+    }
+
     // Get the language resources from a String parameter
-    public static ResourceBundle getLanguageResources(String lang) throws IOException, InterruptedException {
-        System.out.println("Language: " + lang);
+    public ResourceBundle getLanguageResources(String lang) throws IOException, InterruptedException {
         if (lang == null || lang.isEmpty()) {
             System.err.println("No language provided, using default.");
-            return ResourceBundle.getBundle("messages", Locale.forLanguageTag(LANG_DEFAULT));
+            return bundleFactory.getResourceBundle(LANG_DEFAULT);
         } else if (!languageMap.containsKey(lang)) {
-            System.err.println("No locale found for language " + lang + ". Translating...");
+            System.out.println("No locale found for language " + lang + ". Translating...");
             try {
-                return getTranslatedResourceBundle(lang);
+                return bundleFactory.createResourceBundle(lang);
             } catch (Exception e) {
                 System.err.println("An error occurred while translation: " + e.getMessage());
                 System.err.println("Using default language:" + LANG_DEFAULT + ".");
-                return ResourceBundle.getBundle("messages", Locale.forLanguageTag(LANG_DEFAULT));
+                return bundleFactory.getResourceBundle(LANG_DEFAULT);
             }
         } else {
-            System.out.println("Using language " + lang);
-            return ResourceBundle.getBundle("messages", Locale.forLanguageTag(lang));
+            System.out.println("SELECTED LANGUAGE : " + lang);
+            return bundleFactory.getResourceBundle(lang);
         }
     }
 
-    private static ResourceBundle getTranslatedResourceBundle(String langCode) throws IOException, InterruptedException {
+    private ResourceBundle getTranslatedResourceBundle(String langCode) throws IOException, InterruptedException {
         System.out.println("Starting translation for language code: " + langCode);
 
         // Obtenez le contenu du bundle par défaut (messages_en.properties)
-        ResourceBundle defaultBundle = ResourceBundle.getBundle("messages", Locale.forLanguageTag(LANG_DEFAULT));
+        ResourceBundle defaultBundle = bundleFactory.getResourceBundle(LANG_DEFAULT);
         System.out.println("Default bundle loaded for language: " + LANG_DEFAULT);
 
         Properties properties = new Properties();
+        int totalKeys = defaultBundle.keySet().size();
+        int processedKeys = 0;
 
         // Traduisez chaque valeur de clé
         for (String key : defaultBundle.keySet()) {
@@ -192,23 +148,30 @@ public class LanguageManager {
 
             String translatedValue;
             try {
-                translatedValue = TranslationService.translate(originalValue, langCode);
-                //remove "+" from translated value
-                translatedValue = translatedValue.replaceAll("\\+", "");
+                translatedValue = LanguageTranslationService.translate(originalValue, langCode);
+                translatedValue = translatedValue.replaceAll("\\+", " "); // Nettoyer la valeur traduite
+                System.out.println(originalValue + " --> " + translatedValue);
+
             } catch (Exception e) {
                 translatedValue = originalValue; // Utiliser la valeur originale en cas d'erreur
             }
 
             properties.put(key, translatedValue);
+            processedKeys++;
+
+            int progressPercentage = (int) (((double) processedKeys / totalKeys) * 100);
+            console.ClearConsoleAndPrint("Translation progress: " + progressPercentage + "%");
         }
 
         // Créer un nouveau fichier properties avec les traductions
-        String ressourcesPath = "src/main/resources/";
-        File file = new File(ressourcesPath + "messages_" + langCode + ".properties");
+        String resourcesPath = "src/main/resources/";
+        File file = new File(resourcesPath + "messages_" + langCode + ".properties");
         try (FileOutputStream fileOut = new FileOutputStream(file);
              OutputStreamWriter writer = new OutputStreamWriter(fileOut, StandardCharsets.UTF_8)) {
             properties.store(writer, "Translated resource bundle for language: " + langCode);
         }
+
+        System.out.println("TRANSLATION COMPLETED: " + langCode);
 
         // Retournez un nouveau ResourceBundle basé sur le fichier créé
         return new PropertyResourceBundle(new FileInputStream(file));
@@ -216,20 +179,12 @@ public class LanguageManager {
 
 
     // Get the language resources from the system
-    public static String getSystemLanguage() {
+    public String getSystemLanguage() {
         try {
             return System.getProperty("user.language", LANG_DEFAULT);
         } catch (Exception e) {
             System.err.println("An error occurred: " + e.getMessage());
             return LANG_DEFAULT;
         }
-    }
-
-    // Get the language resources from the user
-    private static String getUserSelectedLanguage(Scanner sc) {
-        System.out.println("Please enter your language (fr, en, es, ...): (default: " + LANG_DEFAULT + ")");
-        String userLang = sc.nextLine().toLowerCase();
-        System.out.println("User language: " + userLang);
-        return userLang.isEmpty() ? LANG_DEFAULT : userLang;
     }
 }

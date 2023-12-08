@@ -7,16 +7,19 @@ import java.net.http.HttpResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class TranslationService {
+public class LanguageTranslationService {
 
-    private static final String apiKey = "062f8be081msh26559d4a94a4eb0p1b2f1ajsn1972aefd2af6"; // Remplacer par votre clé API
+    private static final String apiKey = ResourceBundle.getBundle("config").getString("API_KEY");
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final HttpClient httpClient = HttpClient.newHttpClient();
 
-    private TranslationService() {
+    private LanguageTranslationService() {
         // Constructeur privé pour empêcher l'instanciation
     }
 
@@ -40,9 +43,23 @@ public class TranslationService {
 
         // Extraction du texte traduit de la réponse
         if (responseMap.containsKey("text")) {
-            return (String) responseMap.get("text");
+            try {
+                Thread.sleep(500); // Attendre 500ms pour éviter de dépasser la limite de requêtes par minute
+                return (String) responseMap.get("text");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                throw e;
+            }
         } else {
             throw new IOException("Failed to extract translated text from the response");
         }
+    }
+
+
+    public static List<String> getSupportedLanguages() throws IOException, InterruptedException {
+        // return all supported languages by DeepL
+        return List.of(
+                "bg", "zh", "cs", "da", "nl", "en", "et", "fi", "fr", "de", "el", "hu", "id", "it", "ja", "lv", "lt", "pl", "pt-PT", "pt-BR", "ro", "ru", "sk", "sl", "es", "sv", "tr", "uk", "ko", "nb"
+        );
     }
 }

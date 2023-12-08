@@ -5,42 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb187b54-421b-4ca3-b9b4-00b8f0823444" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/RessourceBundleManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Services/TranslationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/epsi/TestDoubleNaming.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ref" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/ErrorMessageManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/InputOutputManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/MessageManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/ResourceBundleFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Utils/ConsoleUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Enums/eGreeting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Enums/eInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Enums/eSentences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Enums/eLang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Enums/eLang.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/IOManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/IOManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/LanguageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/LanguageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/Languages/EnglishLanguage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/Languages/EnglishLanguage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/Languages/FrenchLanguage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/Languages/FrenchLanguage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/Languages/ILanguage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/Languages/ILanguage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/Managers/PalindromeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/PalindromeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ar.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_de.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Enums/eLang.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Enums/eSentences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Enums/Weekdays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/IOManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/LanguageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/LanguageManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/Languages/EnglishLanguage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/Languages/FrenchLanguage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/Languages/ILanguage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/PalindromeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Business/Palindrome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Managers/RessourceBundleManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Services/TranslationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epsi/App/Services/LanguageTranslationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_de.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_de.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_es.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages_fr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_fr.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_hi.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_it.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ja.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ko.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_pl.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_pt.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ro.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_n.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_pl.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ro.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ro.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_zh.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/IOManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/IOManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/LanguageManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/LanguageManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/PalindromeManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/PalindromeManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/epsi/ManagersTest/TestDoubleNaming.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,25 +76,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/test/java/fr/epsi" />
@@ -186,12 +182,23 @@
       <workItem from="1701847750934" duration="3074000" />
       <workItem from="1701851712711" duration="20093000" />
       <workItem from="1701937182862" duration="500000" />
-      <workItem from="1701937708873" duration="14444000" />
+      <workItem from="1701937708873" duration="34494000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

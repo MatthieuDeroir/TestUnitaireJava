@@ -1,11 +1,11 @@
 package fr.epsi.App.Enums;
 
-public enum eSentences {
+public enum Weekdays {
     CONTINUE("input.continue"),
     INVALID("input.invalid"),
     PROMPT("input.prompt"),
+    AUTOMATIC("input.automatic"),
     LANGUAGE("input.language"),
-
     MORNING("greeting.morning"),
     AFTERNOON("greeting.afternoon"),
     EVENING("greeting.evening"),
@@ -15,7 +15,7 @@ public enum eSentences {
 
     private final String key;
 
-    eSentences(String key) {
+    Weekdays(String key) {
         this.key = key;
     }
 
