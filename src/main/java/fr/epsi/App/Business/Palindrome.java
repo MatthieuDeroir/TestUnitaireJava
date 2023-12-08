@@ -1,23 +1,22 @@
-package fr.epsi.Managers;
-import fr.epsi.Enums.eInput;
+package fr.epsi.App.Business;
 
-import java.util.Locale;
+import fr.epsi.App.Enums.Weekdays;
+
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 
-public class PalindromeManager {
+public class Palindrome {
 
     // Check if the user input is a palindrome
     public static String Check(String userInput, ResourceBundle messages) {
         if (userInput == null || userInput.isEmpty()) {
-            return messages.getString(eInput.INVALID.getKey());
+            return messages.getString(Weekdays.INVALID.getKey());
         }
 
         String reversedInput = ReverseString(userInput);
 
         if (userInput.equalsIgnoreCase(reversedInput)) {
-            return messages.getString("palindrome.response");
+            return reversedInput + System.lineSeparator() + messages.getString(Weekdays.CONGRATULATIONS.getKey());
         } else {
             return reversedInput;
         }

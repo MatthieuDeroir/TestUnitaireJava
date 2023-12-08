@@ -1,12 +1,12 @@
 package fr.epsi.ManagersTest;
 
-import fr.epsi.Enums.eGreeting;
-import fr.epsi.Managers.IOManager;
+import fr.epsi.App.Enums.Weekdays;
+import fr.epsi.App.Managers.InputOutputManager;
+import fr.epsi.App.Managers.MessageManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -25,40 +25,42 @@ class IOManagerTest {
     @Mock
     private ResourceBundle mockResourceBundle;
 
-    private IOManager ioManager;
+    private InputOutputManager inputOutputManager;
+
+    private final MessageManager messageManager = new MessageManager(mockResourceBundle);
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         when(mockResourceBundle.getString(anyString())).thenReturn("Test Message");
-        ioManager = new IOManager(mockScanner, mockResourceBundle);
+        inputOutputManager = new InputOutputManager(messageManager);
     }
 
     @Test
     public void testGetInput() {
         when(mockScanner.nextLine()).thenReturn("test input");
-        String input = ioManager.GetInput();
+        String input = inputOutputManager.GetInput();
         assertEquals("test input", input);
     }
 
     @Test
     public void testShowMessage() {
-        ioManager.ShowMessage("test");
+        inputOutputManager.ShowMessage("test");
         verify(mockResourceBundle, times(1)).getString("test");
     }
 
     @Test
     public void testAskToContinue() {
         when(mockScanner.nextLine()).thenReturn("Y").thenReturn("N");
-        assertTrue(ioManager.AskToContinue());
-        assertFalse(ioManager.AskToContinue());
+        assertTrue(inputOutputManager.AskToContinue());
+        assertFalse(inputOutputManager.AskToContinue());
     }
 
     private static Stream<Object[]> greetingMessageTest_VALID() {
         return Stream.of(
-                new Object[]{9, eGreeting.MORNING.getKey(), "Good morning"},
-                new Object[]{15, eGreeting.AFTERNOON.getKey(), "Good afternoon"},
-                new Object[]{20, eGreeting.EVENING.getKey(), "Good evening"}
+                new Object[]{9, Weekdays.MORNING.getKey(), "Good morning"},
+                new Object[]{15, Weekdays.AFTERNOON.getKey(), "Good afternoon"},
+                new Object[]{20, Weekdays.EVENING.getKey(), "Good evening"}
         );
     }
 
@@ -66,7 +68,7 @@ class IOManagerTest {
     @MethodSource("greetingMessageTest_VALID")
     public void testGetGreetingMessage(int hour, String greetingKey, String expectedMessage) {
         when(mockResourceBundle.getString(greetingKey)).thenReturn(expectedMessage);
-        String greeting = ioManager.GetGreetingMessage(hour);
+        String greeting = inputOutputManager.GetGreetingMessage(hour);
         assertEquals(expectedMessage, greeting);
     }
 
